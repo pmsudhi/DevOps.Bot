@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Devops.Bot
+namespace DevOpsBot.Util
 {
     public class DevOpsBotArgs : EventArgs
     {
@@ -12,9 +12,12 @@ namespace Devops.Bot
             arguments = new Dictionary<string, object>();
         }
 
-        public void Add(string key, string value)
+        public int Count
         {
-            arguments.Add(key, value);
+            get
+            {
+                return arguments.Count;
+            }
         }
 
         public object this[string key]
@@ -29,12 +32,9 @@ namespace Devops.Bot
             }
         }
 
-        public int Count
+        public void Add(string key, string value)
         {
-            get
-            {
-                return arguments.Count;
-            }
+            arguments.Add(key, value);
         }
 
         public bool ContainsKey(string key)

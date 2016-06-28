@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using static GitLabProvider.GitLabUtil;
+using DevOpsBot.Util;
 
 namespace GitLabProvider
 {
@@ -10,37 +11,53 @@ namespace GitLabProvider
     {
         public AccessTokenTypeEnum AccessTokenTye;
         public string PrivateKey;
+        DevOpsBotArgs AuthenticationParam;
         protected bool isAuthenticated;
-        protected Dictionary<string, string> AuthentParam;
 
-        public GitLabAuthenticationProvider(Dictionary<string, string> AuthenticationParam)
+        public GitLabAuthenticationProvider(DevOpsBotArgs AuthParam)
         {
-            AuthentParam = AuthenticationParam;
-            Task.Run(async () => { await MainAsync(AuthentParam); }).Wait();
+            AuthenticationParam = AuthParam;
+            
+            Task.Run(async () => { await MainAsync(AuthParam); }).Wait();
         }
 
         public GitLabAuthenticationProvider()
         {
         }
 
-        private async Task MainAsync(Dictionary<string, string> AuthenticationParam)
+        public bool Authenticated
         {
-            var result = await Authenticate(AuthenticationParam);
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+         DevOpsBotArgs IAuthenticationBase.AuthenticationParam
+        {
+            get
+            {
+                return AuthenticationParam;
+            }
+
+            set
+            {
+                AuthenticationParam = value; ;
+            }
         }
 
-        public async Task<bool> Authenticate(Dictionary<string, string> AuthenticationParam)
+        public async Task<bool> Authenticate(DevOpsBotArgs AuthenticationParam)
         {
             bool AuthenticationResult = false;
             if (AuthenticationParam.ContainsKey(GitLabUtil.AuthenticationParam_AccessTokenType))
             {
-                AccessTokenTye = (AccessTokenTypeEnum)Enum.Parse(typeof(AccessTokenTypeEnum), AuthenticationParam[GitLabUtil.AuthenticationParam_AccessTokenType]);
+                AccessTokenTye = (AccessTokenTypeEnum)Enum.Parse(typeof(AccessTokenTypeEnum), AuthenticationParam[GitLabUtil.AuthenticationParam_AccessTokenType].ToString());
                 switch (AccessTokenTye)
                 {
                     case AccessTokenTypeEnum.Private_Token:
 
                         if (AuthenticationParam.ContainsKey(GitLabUtil.AuthenticationParam_Private_Token))
                         {
-                            PrivateKey = AuthenticationParam[GitLabUtil.AuthenticationParam_Private_Token];
+                            PrivateKey = AuthenticationParam[GitLabUtil.AuthenticationParam_Private_Token].ToString();
                             isAuthenticated = true;
                         }
                         else
@@ -59,12 +76,9 @@ namespace GitLabProvider
             return AuthenticationResult;
         }
 
-        public bool Authenticated
+        private async Task MainAsync(DevOpsBotArgs AuthenticationParam)
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            var result = await Authenticate(AuthenticationParam);
         }
     }
 }

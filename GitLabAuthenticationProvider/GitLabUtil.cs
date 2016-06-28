@@ -1,11 +1,25 @@
 ﻿using Devops.Bot;
 using System;
 using System.Net;
+using DevOpsBot.Util;
 
 namespace GitLabProvider
 {
     public static class GitLabUtil
     {
+        public static string AuthenticationParam_AccessTokenType = "AccessTokenType";
+
+        public static string AuthenticationParam_BaseProjectURL = "Base_Project_URL";
+
+        public static string AuthenticationParam_Private_Token = "Private_Token";
+
+        public enum AccessTokenTypeEnum
+        {
+            Private_Token = 0,
+            OAuth_2_Token = 1,
+            Personal_Access_Token = 2
+        }
+
         public static WebRequest createListProjectRequest(DevOpsBotArgs args, GitLabAuthenticationProvider AuthProvider)
         {
             WebRequest wr = null;
@@ -25,17 +39,6 @@ namespace GitLabProvider
                     wr.Headers["PRIVATE-TOKEN"] = AuthProvider.PrivateKey;
                     break;
             }
-        }
-
-        public static string AuthenticationParam_AccessTokenType = "AccessTokenType";
-        public static string AuthenticationParam_Private_Token = "Private_Token";
-        public static string AuthenticationParam_BaseProjectURL = "Base_Project_URL";
-
-        public enum AccessTokenTypeEnum
-        {
-            Private_Token = 0,
-            OAuth_2_Token = 1,
-            Personal_Access_Token = 2
         }
     }
 }

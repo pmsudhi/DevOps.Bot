@@ -1,7 +1,7 @@
 ﻿using Devops.Bot;
 using DevOpsBot.Authentication;
 using System;
-
+using DevOpsBot.Util;
 namespace GitLabProvider
 {
     public class GitLabBot : DevOpsBotBase

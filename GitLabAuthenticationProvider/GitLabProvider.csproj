@@ -56,6 +56,10 @@
       <Project>{9f1215e8-43dd-4475-b378-5da557415af5}</Project>
       <Name>DevOpsBot.Base</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DevOpsBot.Util\DevOpsBot.Util.csproj">
+      <Project>{b91c15d0-4636-4a1b-b845-657c2d4c0bb6}</Project>
+      <Name>DevOpsBot.Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Processores.json" />

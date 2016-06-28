@@ -1,6 +1,8 @@
 ﻿using Devops.Bot;
 using DevOpsBot.Authentication;
+using DevOpsBot.Util;
 using System;
+using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -8,8 +10,7 @@ namespace GitLabProvider.Resources
 {
     public class Projects : DevOpsBotBase
     {
-        private DevOpsBotArgs InitParams;
-
+       
         public override string Add(DevOpsBotArgs args)
         {
             throw new NotImplementedException();
@@ -43,7 +44,12 @@ namespace GitLabProvider.Resources
         {
             GitLabAuthenticationProvider gla = (GitLabAuthenticationProvider)AuthenticationProvider;
             WebRequest wr = GitLabUtil.createListProjectRequest(InitParams, gla);
-            return null;
+            WebResponse Wresp = wr.GetResponse();
+            StreamReader sr =new StreamReader(Wresp.GetResponseStream());
+            string response = sr.ReadToEnd();
+            sr.Close();
+            sr = null;
+            return response;
         }
 
         public async Task<string> ListProjects()

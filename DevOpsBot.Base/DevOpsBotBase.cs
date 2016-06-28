@@ -1,4 +1,5 @@
-﻿using DevOpsBot.Authentication;
+﻿using DevOpsBot.Util;
+using DevOpsBot.Authentication;
 
 namespace Devops.Bot
 {
@@ -7,21 +8,7 @@ namespace Devops.Bot
         protected IAuthenticationBase AuthenticationProvider;
         protected DevOpsBotArgs InitParams;
 
-        public abstract string List(DevOpsBotArgs args);
-
-        public abstract string Get(DevOpsBotArgs args);
-
         public abstract string Add(DevOpsBotArgs args);
-
-        public abstract string Edit(DevOpsBotArgs args);
-
-        public abstract string Delete(DevOpsBotArgs args);
-
-        public virtual void Initialize(DevOpsBotArgs InitArgs, IAuthenticationBase AuthProvider)
-        {
-            AuthenticationProvider = AuthProvider;
-            InitParams = InitArgs;
-        }
 
         public virtual bool CheckIfInitialized()
         {
@@ -31,5 +18,19 @@ namespace Devops.Bot
             }
             return true;
         }
+
+        public abstract string Delete(DevOpsBotArgs args);
+
+        public abstract string Edit(DevOpsBotArgs args);
+
+        public abstract string Get(DevOpsBotArgs args);
+
+        public virtual void Initialize(DevOpsBotArgs InitArgs, IAuthenticationBase AuthProvider)
+        {
+            AuthenticationProvider = AuthProvider;
+            InitParams = InitArgs;
+        }
+
+        public abstract string List(DevOpsBotArgs args);
     }
 }
