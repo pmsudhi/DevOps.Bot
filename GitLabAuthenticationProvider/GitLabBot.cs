@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Devops.Bot;
+﻿using Devops.Bot;
 using DevOpsBot.Authentication;
+using System;
 
 namespace GitLabProvider
 {
@@ -30,14 +26,28 @@ namespace GitLabProvider
             throw new NotImplementedException();
         }
 
-        public override void Initilize(DevOpsBotArgs InitArgs, IAuthenticationBase AuthProvider)
+        public override void Initialize(DevOpsBotArgs InitArgs, IAuthenticationBase AuthProvider)
         {
-            base.Initilize(InitArgs, AuthProvider);
+            base.Initialize(InitArgs, AuthProvider);
         }
 
         public override string List(DevOpsBotArgs args)
         {
-            throw new NotImplementedException();
+            if (CheckIfInitialized())
+            {
+                if (AuthenticationProvider.Authenticated)
+                {
+                }
+                else
+                {
+                    throw new MethodAccessException("You need to call Authenticate method of gitLabAuthentication provider with right parameters or call overloaded constructor");
+                }
+            }
+            else
+            {
+                throw new MethodAccessException("Class not Initilized. You need to call Initialize method before calling any other method");
+            }
+            return string.Empty;
         }
     }
 }

@@ -1,9 +1,4 @@
 ﻿using DevOpsBot.Authentication;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Devops.Bot
 {
@@ -11,18 +6,30 @@ namespace Devops.Bot
     {
         protected IAuthenticationBase AuthenticationProvider;
         protected DevOpsBotArgs InitParams;
+
         public abstract string List(DevOpsBotArgs args);
+
         public abstract string Get(DevOpsBotArgs args);
+
         public abstract string Add(DevOpsBotArgs args);
+
         public abstract string Edit(DevOpsBotArgs args);
+
         public abstract string Delete(DevOpsBotArgs args);
 
-        public virtual void Initilize(DevOpsBotArgs InitArgs, IAuthenticationBase AuthProvider)
+        public virtual void Initialize(DevOpsBotArgs InitArgs, IAuthenticationBase AuthProvider)
         {
             AuthenticationProvider = AuthProvider;
             InitParams = InitArgs;
         }
-        
 
+        public virtual bool CheckIfInitialized()
+        {
+            if (AuthenticationProvider == null || InitParams == null || InitParams.Count <= 1)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

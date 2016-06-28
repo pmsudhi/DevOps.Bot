@@ -1,0 +1,13 @@
+﻿{
+  "processor": [{
+   "key": 1,
+   "class":2,
+   "path":3
+  },
+  {
+   "key": 1,
+   "class":2,
+   "path":3
+  }
+  ]
+}
