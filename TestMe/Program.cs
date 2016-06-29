@@ -1,7 +1,7 @@
-﻿using GitLabProvider;
-using System.Collections.Generic;
+﻿using DevOpsBot.Util;
+using GitLabProvider;
+using System.IO;
 using System.Threading.Tasks;
-using DevOpsBot.Util;
 
 namespace ConsoleApplication1
 {
@@ -13,10 +13,19 @@ namespace ConsoleApplication1
             DevOpsBotArgs objparam = new DevOpsBotArgs();
             objparam.Add(GitLabUtil.AuthenticationParam_AccessTokenType, GitLabUtil.AccessTokenTypeEnum.Private_Token.ToString());
             objparam.Add(GitLabUtil.AuthenticationParam_Private_Token, "rUVXQigQAU6h8YfzvhHg");
-            objparam.Add(GitLabUtil.AuthenticationParam_BaseProjectURL, "http://waspsource/");
+            objparam.Add(GitLabUtil.AuthenticationParam_BaseProjectURL, "http://waspsource/api/v3/projects");
+            string ProcessorJson;
+            using (TextReader reader = File.OpenText(@"G:\DevOps.Bot\Devops.Bot\GitLabAuthenticationProvider\Processores.json"))
+            {
+                ProcessorJson = reader.ReadToEnd();
+            }
+            objparam.Add(GitLabUtil.Gitlab_ProcessorJSON, ProcessorJson);
             Task.Run(async () => { await MainAsync(gp, objparam); }).Wait();
             GitLabBot gb = new GitLabBot();
             gb.Initialize(objparam, gp);
+            DevOpsBotArgs Processorargs = new DevOpsBotArgs();
+            Processorargs.Add(GitLabUtil.Gitlab_ProcessorType, GitLabUtil.GitlabResourceType.Projects.ToString());
+            string str = gb.List(Processorargs);
         }
 
         private static async Task MainAsync(GitLabAuthenticationProvider gp, DevOpsBotArgs objparam)

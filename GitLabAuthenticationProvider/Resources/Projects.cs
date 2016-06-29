@@ -10,7 +10,6 @@ namespace GitLabProvider.Resources
 {
     public class Projects : DevOpsBotBase
     {
-       
         public override string Add(DevOpsBotArgs args)
         {
             throw new NotImplementedException();
@@ -38,14 +37,17 @@ namespace GitLabProvider.Resources
                 throw new ArgumentNullException("Base_Project_URL", "Dictionary should contain an entry with key AuthenticationParam_BaseProjectURL and value");
             }
             InitParams = InitArgs;
+            AuthenticationProvider = AuthProvider;
         }
 
         public override string List(DevOpsBotArgs args)
         {
             GitLabAuthenticationProvider gla = (GitLabAuthenticationProvider)AuthenticationProvider;
             WebRequest wr = GitLabUtil.createListProjectRequest(InitParams, gla);
+            wr.UseDefaultCredentials = true;
+            
             WebResponse Wresp = wr.GetResponse();
-            StreamReader sr =new StreamReader(Wresp.GetResponseStream());
+            StreamReader sr = new StreamReader(Wresp.GetResponseStream());
             string response = sr.ReadToEnd();
             sr.Close();
             sr = null;

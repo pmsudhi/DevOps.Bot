@@ -29,7 +29,7 @@ namespace GitLabProvider
         {
             get
             {
-                throw new NotImplementedException();
+                return isAuthenticated;
             }
         }
          DevOpsBotArgs IAuthenticationBase.AuthenticationParam

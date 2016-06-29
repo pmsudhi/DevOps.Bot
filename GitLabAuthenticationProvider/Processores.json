@@ -1,14 +1,14 @@
 ﻿{
   "processor": [
     {
-      "key": 1,
-      "class": 2,
-      "path": 3
+      "classname": "GitLabProvider.Resources.Projects",
+      "key": "Projects",
+      "path": "G:\\DevOps.Bot\\Devops.Bot\\TestMe\\bin\\Debug\\GitLabProvider.dll"
     },
     {
-      "key": 1,
-      "class": 2,
-      "path": 3
+      "key": "1",
+      "classname": "2",
+      "path": "3"
     }
   ]
 }
