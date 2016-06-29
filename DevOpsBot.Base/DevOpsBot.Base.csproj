@@ -41,14 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DevOpsBotArgs.cs" />
     <Compile Include="DevOpsBotBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DevOpsBot.Authentication\DevOpsBot.Authentication.csproj">
-      <Project>{2F8EC0A5-6FC9-4097-91B4-0B01F06F6532}</Project>
+      <Project>{2f8ec0a5-6fc9-4097-91b4-0b01f06f6532}</Project>
       <Name>DevOpsBot.Authentication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DevOpsBot.Util\DevOpsBot.Util.csproj">
+      <Project>{b91c15d0-4636-4a1b-b845-657c2d4c0bb6}</Project>
+      <Name>DevOpsBot.Util</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

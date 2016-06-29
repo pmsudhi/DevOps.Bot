@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Devops.Bot
+namespace DevOpsBot.Util
 {
-    public class DevOpsBotArgs:EventArgs
+    public class DevOpsBotArgs : EventArgs
     {
         private Dictionary<string, object> arguments;
 
@@ -15,10 +12,14 @@ namespace Devops.Bot
             arguments = new Dictionary<string, object>();
         }
 
-        public void Add(string key,string value)
+        public int Count
         {
-            arguments.Add(key, value);
+            get
+            {
+                return arguments.Count;
+            }
         }
+
         public object this[string key]
         {
             get
@@ -29,6 +30,16 @@ namespace Devops.Bot
             {
                 arguments[key] = value;
             }
+        }
+
+        public void Add(string key, string value)
+        {
+            arguments.Add(key, value);
+        }
+
+        public bool ContainsKey(string key)
+        {
+            return arguments.ContainsKey(key);
         }
     }
 }

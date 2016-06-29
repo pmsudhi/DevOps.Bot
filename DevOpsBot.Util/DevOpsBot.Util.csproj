@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{373876FA-ABCC-4802-BCFE-D4DEE69E649F}</ProjectGuid>
+    <ProjectGuid>{B91C15D0-4636-4A1B-B845-657C2D4C0BB6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GitLabProvider</RootNamespace>
-    <AssemblyName>GitLabProvider</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <RootNamespace>DevOpsBot.Util</RootNamespace>
+    <AssemblyName>DevOpsBot.Util</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,10 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,29 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GitLabAuthenticationProvider.cs" />
-    <Compile Include="GitLabBot.cs" />
-    <Compile Include="GitLabUtil.cs" />
+    <Compile Include="DevOpsBotArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\Projects.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DevOpsBot.Authentication\DevOpsBot.Authentication.csproj">
-      <Project>{2F8EC0A5-6FC9-4097-91B4-0B01F06F6532}</Project>
-      <Name>DevOpsBot.Authentication</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DevOpsBot.Base\DevOpsBot.Base.csproj">
-      <Project>{9f1215e8-43dd-4475-b378-5da557415af5}</Project>
-      <Name>DevOpsBot.Base</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DevOpsBot.Util\DevOpsBot.Util.csproj">
-      <Project>{b91c15d0-4636-4a1b-b845-657c2d4c0bb6}</Project>
-      <Name>DevOpsBot.Util</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-    <None Include="Processores.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
