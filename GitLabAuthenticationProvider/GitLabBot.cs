@@ -63,7 +63,7 @@ namespace GitLabProvider
                             Type AssemblyType = processorAssembly.GetType(prs.classname);
                             DevOpsBotBase objActivity =(DevOpsBotBase) Activator.CreateInstance(AssemblyType);
                             objActivity.Initialize(InitParams, AuthenticationProvider);
-                            objActivity.List(args);
+                            response= objActivity.List(args);
                         }
                         else
                         {
