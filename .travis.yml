@@ -1,0 +1,4 @@
+language: csharp
+solution: Devops.Bot.sln
+install:
+  - nuget restore Devops.Bot.sln
