@@ -9,5 +9,6 @@ namespace DevOpsBot.Authentication
         bool Authenticated { get; }
         DevOpsBotArgs AuthenticationParam { get; set; }
         Task<bool> Authenticate(DevOpsBotArgs AuthenticationParam);
+        
     }
 }
