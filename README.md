@@ -1,4 +1,5 @@
-Travis build status [![Build Status](https://travis-ci.org/pmsudhi/DevOps.Bot.svg?branch=master)](https://travis-ci.org/pmsudhi/DevOps.Bot.svg?branch=master)     [![Throughput Graph](https://graphs.waffle.io/pmsudhi/DevOps.Bot/throughput.svg)](https://waffle.io/pmsudhi/DevOps.Bot/metrics/throughput)
+[![Build Status](https://travis-ci.org/pmsudhi/DevOps.Bot.svg?branch=master)](https://travis-ci.org/pmsudhi/DevOps.Bot.svg?branch=master)     [![Build status](https://ci.appveyor.com/api/projects/status/m5owtyas05ya23jg?svg=true)](https://ci.appveyor.com/project/pmsudhi/devops-bot)
+[![Throughput Graph](https://graphs.waffle.io/pmsudhi/DevOps.Bot/throughput.svg)](https://waffle.io/pmsudhi/DevOps.Bot/metrics/throughput)
 
 
 # DevOps.Bot
