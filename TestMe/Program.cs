@@ -28,7 +28,7 @@ namespace ConsoleApplication1
             DevOpsBotArgs Processorargs = new DevOpsBotArgs();
             Processorargs.Add(GitLabUtil.Gitlab_ProcessorType, GitLabUtil.GitlabResourceType.Projects.ToString());
             string str = gb.List(Processorargs);
-            var obj= JsonConvert.DeserializeObject<List<GitlabProject>>(str);
+            var obj = JsonConvert.DeserializeObject<List<GitlabProject>>(str);
         }
 
         private static async Task MainAsync(GitLabAuthenticationProvider gp, DevOpsBotArgs objparam)
